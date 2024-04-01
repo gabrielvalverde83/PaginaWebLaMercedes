@@ -1,0 +1,797 @@
+/*Estilos globales (generales) ----------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+* {
+	box-sizing: border-box;		/* el * incluye a todos los elementos, sino los padding van a sumar al with del elemento y todo se va a desarmar */
+	margin: 0px;
+	padding: 0px;
+}
+
+article,		/*codigo de compatibilidad*/
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main, 
+menu,
+nav,
+section,
+summary { 
+  display: block;
+  margin:0px;
+}
+
+html,
+body {
+	height:100%;
+	/*font-size: 21px;*/
+	font-size: 62.5%;
+}
+
+body {
+	margin:0px; /*obligo al body a no tener el margen de 8px que trae por defecto, esto es para que me saque la linea blanca que queda arriba*/
+	font-family: 'Raleway', sans-serif;	/*fuente del texto*/
+	/*font-size: 21px;*/
+	font-size: 10px;
+	line-height: 35px; 	/*Interlineado*/
+	background-color: white;	/*Color de fondo */
+	/* background-image: url("../img/fondo.jpg"); */
+	background-position: 50%;
+	background-size: cover; 
+	background-attachment: fixed;
+}
+
+#pantalla {
+	width:100%;
+	height:auto;
+	position: relative;
+	float:left;
+	margin-top: -30px;
+	padding: 0;
+	top:0;
+}
+
+.contenedor {
+	width:100%;		
+	height:auto;
+	position:relative;
+	float: left;	
+	margin:0px auto;		/* con esto me lo centra, no con float left */
+	overflow: hidden;		/* para limpiar los float*/
+	max-width: 100%;		/* para que no aparezca la barra del scroll abajo, sino siempre va a ser de 1170 px el ancho de la pantall */
+	margin-top: 80px;
+}
+
+h1 {
+	margin: 0px;
+}
+
+img {
+	width: 100%; /*Es muy importante para hacer el sitio de forma responsiva. Esto hace que la imagen crezca hasta cierto punto y si achico la pantalla se va achicango hasta el max ancho de pantalla*/
+	height: auto; /*se agrega x las dudas, en teoria funciona por defecto*/
+}
+
+ul,li {
+	list-style: none;
+}
+
+a {		
+	font-weight: 600; /*esta entre normal y bold (negrita)*/
+	text-decoration: none; /*le saco el subrayado*/
+}
+
+
+/*clases especiales ---------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+.active {	/*referencia visual,dejo marcado en que pagina estoy*/
+	border-bottom: solid 1px #f21f2f;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.normal {
+	font-weight: normal;
+}
+
+.to-top {				/*boton para subir al inicio*/
+		display:block;
+		background:url(../img/to-top.svg) no-repeat center center;
+		width: 60px;
+		height: 60px;
+	  	position: fixed;
+	  	bottom: 40px;
+	  	right: 10px;
+	  	border-radius: 5px;
+	  	box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+		background-color: rgba(46,114,63, .5);
+}
+
+/*Estilos particulares del sitio --------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+/*Header -------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+header {
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	top: 0px;
+	left:0px;
+	margin: 0;
+	padding: 0;
+	/* background-color: rgba(0,0,0,0.7); */
+	background-color: rgb(255, 255, 255, 1);
+	box-shadow: 0px 0px 10px rgba(149, 146, 146, 0.8);
+	z-index: 9999;
+}
+
+	.logo {
+		position: relative;
+		float: left;
+		/* background-color: rgb(255, 255, 255, 1); */
+	}
+
+	.logo img{
+		margin-left:40px;
+		margin-top:5px;
+		margin-bottom:5px;
+		height: 70px;
+		width: auto;
+	}
+
+	.header-menu {					
+		width: 65%;
+		height: 70px;
+		position:relative;
+		float: left;
+		/* margin-left: 50px; */
+		margin-left:7%;
+		/*left:0;*/
+	}
+
+	.menu-ubicacion {		/*se hace de esta forma para el menu responsivo*/
+		left: 0;
+	}
+
+	.header-menu li {
+		/* width: 19%; */
+		margin-left: 4%;
+		text-align: center;
+		position:relative;
+		float: left;
+		top: 26px;
+	}
+
+	.header-menu li a {
+		width: 100%;
+		text-transform: uppercase;
+		font-size:20px;
+		/* color:white; */
+		color:rgb(209, 103, 27);
+	}
+
+	.header-menu li a:hover {
+		text-decoration: underline;
+	}
+
+	.header-languages {
+		position:relative;
+		float: right;
+		top: 30px;
+		right: 30px;
+	}
+
+	.header-languages img {
+		height: 20px;
+		width: auto;
+		margin-left: 5px;
+	}
+
+	/* desplazamiento ancla */
+	
+	.ancla-mov {
+		scroll-margin-top: 10rem;
+	}
+	
+	/*icono del menu off-canvas*/
+
+	.navbar-toggle {
+		width:60px;
+		height:60px;
+		position:absolute;
+		top:0;
+		right:80px;
+		padding:15px;
+		background-color: transparent;
+		border:solid 3px rgb(46, 114, 63);
+		cursor:pointer;
+		display:none;
+	}
+		.navbar-toggle .icon-bar {
+			height:3px;
+			display:block;			
+			background-color:rgb(209, 103, 27);
+		}
+		.navbar-toggle .icon-bar + .icon-bar {
+			margin-top:6px;
+		}
+	
+	/*menu-cerrar es el encabezado del menu off-canvas donde esta el logo y el boton cerrar del menu off-canvas*/
+
+	.menu-cerrar {
+		display: none;
+	}
+
+	.menu-cerrar li {
+		width: 100%;
+		height: auto;
+		text-transform: uppercase;
+		font-size:20px;
+		color: rgb(209, 103, 27)
+	}
+
+	.menu-cerrar-logo {
+		width: 100%;
+	}
+
+	.menu-cerrar img {
+		margin-top: 10px;
+		height: 80px;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.menu-cerrar h3 {
+		position: absolute;
+		top:0;
+		right: 0;
+		color: rgb(46,114,63);
+		font-size: 18px;
+		margin-right:10px;
+		margin-top:10px;
+		border: solid 1px red;
+		padding:15px;
+		border:solid 3px rgb(46,114,63);
+		cursor:pointer;
+	}
+
+
+/* separador01 -----------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+.separador01 {
+	width: 100%;
+	height: auto;
+	position: relative;
+	float:left;
+	margin: 0;
+	padding: 0;
+	/* margin-top: 20px; */
+}
+
+.separador01-texto {
+	position: absolute;
+	z-index: 1;
+	/* width: max-content; */
+	margin: 6% 8%;		/*20 izq y 20 der*/
+}
+
+.separador01-texto h1 {
+	font-size: 8vw;
+	height: 5vw;
+	margin-top: 6rem;
+	color: #fff;
+}
+
+.separador01 img {
+	position: relative;
+	float:left;
+}
+
+
+
+/*seccion01 -----------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+.seccion01 {
+	width: 100%;
+	height: auto;
+	/*display: flex;		/*para hacer que las columnas sean iguales de alto por mas que no tengan la misma altura real */
+	position: relative;
+	float:left;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	background-color: #fff;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+	.seccion01 p {
+		font-size: 2.5rem;
+		margin-top: 25px;
+		text-align: justify;
+	}
+
+		.seccion01-imagen img {
+			width: 40%;
+			position: relative;
+			float: left;
+			margin:0;
+			box-shadow: 5px 5px 6px rgba(0,0,0,0.8);
+		}
+		
+		.seccion01-texto {
+			width: 55%;
+			position: relative;
+			float: right;
+			margin-top: -20px;
+		}
+
+
+/* separador02 -----------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+.separador02,
+.separador03,
+.separador04,
+.separador05,
+.separador06 {
+	width: 100%;
+	height: auto;
+	position: relative;
+	float:left;
+	margin-top: 40px;
+}
+
+.separador02-texto,
+.separador03-texto,
+.separador04-texto,
+.separador05-texto,
+.separador06-texto {
+	position: absolute;
+	z-index: 1;
+	margin: 6% 8%;		/*20 izq y 20 der*/
+	
+
+}
+
+.separador02-texto h1,
+.separador03-texto h1,
+.separador06-texto h1{
+	font-size: 8vw;
+	/* margin-top: 6rem; */
+	color: rgb(255, 255, 255);
+}
+
+.separador04-texto h1,
+.separador05-texto h1 {
+	font-size: 8vw;
+	/* margin-top: 6rem; */
+	color: rgb(153, 153, 153);
+}
+
+.separador02 img
+.separador03 img,
+.separador04 img,
+.separador05 img, 
+.separador06 img {
+	position: relative;
+	float:left;
+}
+
+
+/*seccion01 -----------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+.seccion02 {
+	width: 100%;
+	height: auto;
+	/*display: flex;		/*para hacer que las columnas sean iguales de alto por mas que no tengan la misma altura real */
+	position: relative;
+	float:left;
+	/* margin-top: 20px; */
+	margin-bottom: 30px;
+	background-color: #fff;
+	padding-left: 60px;
+	padding-right: 60px;
+	/* padding-top: 10px; */
+	/* padding-bottom: 40px; */
+	
+}
+
+	.seccion02-texto p {
+		font-size: 2.5rem;
+		margin-top: 25px;
+		text-align: center;
+	}
+
+	.seccion02-box01,
+	.seccion02-box02,
+	.seccion02-box03,
+	.seccion02-box04 {
+		width: 45%;
+		margin-top: 20px;
+	}
+
+	.seccion02-box01 ,
+	.seccion02-box03 {
+		position: relative;
+		float: left;
+	}
+
+	.seccion02-box02 ,
+	.seccion02-box04 {
+		position: relative;
+		float: right;
+	}
+
+	.seccion02-imagenes h3 {
+		font-size: 3.5rem;
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	.seccion02-imagenes img {
+		margin-top:10px;
+		box-shadow: 5px 5px 6px rgba(0,0,0,0.8);
+	}
+
+	.seccion03,
+	.seccion04,
+	.seccion05, 
+	.seccion06 {
+		width: 100%;
+		height: auto;
+		/*display: flex;		/*para hacer que las columnas sean iguales de alto por mas que no tengan la misma altura real */
+		position: relative;
+		float:left;
+		margin-top: 20px;
+		margin-bottom: 30px;
+		background-color: #fff;
+		padding:0 15%;
+		/* padding-top: 10px; */
+		/* padding-bottom: 40px; */
+		
+	}
+	
+		.seccion03 h2,
+		.seccion04 h2 {
+			text-align: center;
+			font-size: 4.0rem;
+			color:rgb(46, 114, 63);
+			margin-top:10px;
+			margin-bottom: 20px;	
+		}
+
+		.seccion04 h2 {
+			margin-top:15px;
+		}
+	
+		.seccion03 p,
+		.seccion04 p,
+		.seccion05 p  {
+			font-size: 2.5rem;
+			margin-top: 25px;
+			text-align: center;
+		}
+
+
+
+	.seccion06-datos-contacto {
+		width: 55%;
+		position: relative;
+		float: left;
+		margin:0;
+	}
+	
+	.seccion06-mapa-dinamico {
+		width: 40%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		position: relative;
+		float: right;
+	}
+
+	.seccion06-datos-contacto h2 {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		font-size: 3rem;
+		color:rgb(46, 114, 63);
+		font-weight: bolder;
+	}
+	
+	.seccion06-datos-contacto p {
+		font-size: 1.5rem;
+		font-style: italic;
+		color:#000;
+		
+	}
+
+	.seccion06-datos-contacto p span {
+		color:rgb(209, 103, 27);
+		margin-right: 5px;
+	}
+
+	.seccion06-datos-contacto a {
+		text-decoration: none;
+		font-weight: 200;
+		color: #000000;
+	}
+
+
+
+	
+
+/*footer -----------------------------------------------------------------
+-------------------------------------------------------------------------------------*/
+
+footer {
+	width: 100%;
+	height: 30px;
+	position: fixed;
+	bottom: 0px;
+	left:0px;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 9999;
+	text-align: center;
+}
+	.caja-footer {
+		/*width: 60%;*/
+		position: relative;
+		float: none;
+		margin-top: 2px;
+		/*padding-left: 29%;*/
+	}
+
+	footer h3 {
+		display: inline;
+		font-size: 15px;
+		color:grey;
+		font-style: italic;
+	}
+
+	footer a{
+		display: inline;
+		font-size: 15px;
+		color:grey;
+		font-style: italic;
+	}
+
+
+
+
+
+/*sitio responsivo -----------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------*/
+
+/*punto de quiebre -----------------------------------------------------------------
+-------------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 1230px) {
+	
+	header {
+		height:60px;
+
+	}
+
+	/* .principal {
+		margin-top: 100px;
+	} */
+
+	.logo img{
+		margin-left:20px;
+		margin-top:5px;
+		height: 50px;
+	}
+
+	.navbar-toggle {
+		display:block;
+	}
+
+	.menu-cerrar {
+		display: block;
+	}
+
+	.header-menu {
+		width:100%;
+		height:auto;
+		position:fixed;
+		top:0;
+		margin:0;
+		padding: 0;
+		z-index:99;
+		-webkit-transition:all 400ms ease-in-out;
+    	-moz-transition:all 400ms ease-in-out;
+    	-o-transition:all 400ms ease-in-out;
+		transition:all 400ms ease-in-out;
+	}
+
+	.header-menu li {
+		width:100%;	
+		margin:0;
+		padding:0;
+		top:0;		
+		float:left;	
+		background-color:white;	
+	}
+
+	.menu-ubicacion {
+		left: -1850px;
+	}
+
+	.menuResponsivo-ubicacion {
+		left:0;
+	}	
+
+	.header-languages {
+		top: 17px;
+	}
+
+
+	/* no funciona el menu responsivo en IOS mobile de esta formar, por lo que tuve que hacerlo con jQuery
+
+	.navbar-toggle:focus ~ .header-menu {
+		left:0px;
+	}*/
+
+	#pantalla {
+		margin-top: -50px;
+	}
+
+	.separador01-texto h1 {
+		font-size: 7rem;
+		margin-top: 5rem;
+	}
+
+	.seccion01-imagen img {
+		width: 100%;
+	}
+	
+	.seccion01-texto {
+		margin-top: 20px;
+		width: 100%;
+	}
+
+	.seccion01 p {
+		text-align: center;
+	}
+
+
+
+	footer {
+	height: 20px;
+
+	}
+	
+	.caja-footer {
+		margin-top: -4px;
+	}
+
+	footer h3 {
+		font-size: 12px;
+	}
+}
+
+/* punto de quiebre -----------------------------------------------------------------
+-------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 1000px) {
+
+	.separador01-texto h1 {
+		font-size: 5rem;
+		margin-top: 4rem;
+	}
+
+	.seccion03,
+	.seccion04,
+	.seccion05,
+	.seccion06 {
+		padding:0 7%;
+	}
+
+}
+
+
+/*punto de quiebre -----------------------------------------------------------------
+-------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 800px) {
+
+	.separador01-texto h1 {
+		font-size: 4rem;
+		margin-top: 3rem;
+	}
+
+	.separador02,
+	.separador03,
+	.separador04,
+	.separador05,
+	.separador06 {
+		margin-top: 20px;
+	}
+
+	.seccion06-datos-contacto {
+		width: 100%;
+		text-align: center;
+	}
+	
+	.seccion06-mapa-dinamico {
+		width: 100%;
+		text-align: center;
+	}
+
+}
+
+/*punto de quiebre -----------------------------------------------------------------
+-------------------------------------------------------------------------------------*/
+
+@media screen and (max-width:670px) {
+
+	html, body {
+		font-size: 1.7vw;
+	}
+
+	.principal {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.separador01-texto h1 {
+		font-size: 4rem;
+		margin-top: 3rem;
+	}
+
+	footer {
+		height: 6.5vw;
+
+	}
+		.caja-footer {
+			margin-top: -1vw;
+		}
+
+		footer h3 {
+			font-size: 2.3vw;
+		}
+
+}
+
+@media screen and (max-width: 550px) {
+
+	.separador01-texto h1 {
+		font-size: 3rem;
+		margin-top: 2rem;
+	}
+
+	.separador02-texto,
+	.separador03-texto,
+	.separador04-texto,
+	.separador05-texto,
+	.separador06-texto {
+		margin: 4% 8%;		/*20 izq y 20 der*/
+		
+
+}
+
+}
+
+
+
+
+
